@@ -1,6 +1,8 @@
-﻿using Generics_Example_02.Services;
+﻿using Generics_Example_02.Entities;
+using Generics_Example_02.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Generics_Example_02
 {
@@ -8,22 +10,23 @@ namespace Generics_Example_02
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>();
-
-
+            List<Products> list = new List<Products>();
+            
             Console.Write("Enter N: ");
             int number = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < number; i++)
             {
-                int value = int.Parse(Console.ReadLine());
-                list.Add(value);
-
+                string[] vect = Console.ReadLine().Split(',');
+                string name = vect[0];
+                double price = int.Parse(vect[1], CultureInfo.InvariantCulture);
+                
+                list.Add(new Products(name, price));
             }
 
             CalculationService calculationService = new CalculationService();
 
-            int max = calculationService.Max(list);
+            Products max = calculationService.Max(list);
 
             Console.WriteLine($"Biggest number is: {max}");
             

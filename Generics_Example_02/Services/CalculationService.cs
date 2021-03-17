@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Generics_Example_02.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,10 @@ namespace Generics_Example_02.Services
 {
     class CalculationService
     {
-
+        
         public T Max<T>(List<T> list) where T : IComparable
         {
+
             T max = list[0];
 
             for (int i = 1; i < list.Count; i++)
